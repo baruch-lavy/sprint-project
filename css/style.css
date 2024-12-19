@@ -41,3 +41,8 @@ body.dark-mode {
     background-color: #333;
     color: white;
 }
+
+.hint-revealed {
+    background-color: yellow; 
+    opacity: 0.8;
+}

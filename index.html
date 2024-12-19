@@ -8,12 +8,25 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body onload="onInit()">
+<body onload = "onInit()">
+    <button class="safe-click" onclick="onSafeClick()">Safe Clicks: 3</button>
+    <div class="lives">Lives: ❤️❤️❤️</div>
+    <button class="hint" onclick="activateHint()">Hints: 3</button>
+    <button class="smiley" onclick="onInit()">😃</button>
+
+
+    <div class="best-time">Best Time: --</div>
+    <div class="timer">Time: 0s</div>
     <div>
         <table class="board"></table>
     </div>
     <button onclick="onInit()">Restart</button>
+    <button class="mega-hint" onclick="activateMegaHint()">Mega Hint</button>
     <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+    <button onclick="setLevel(4, 2)">Beginner</button>
+    <button onclick="setLevel(8, 14)">Intermediate</button>
+    <button onclick="setLevel(12, 32)">Expert</button>
 
     <script src="js/main.js"></script>
     <script src="js/utils.js"></script>
