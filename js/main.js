@@ -138,9 +138,6 @@ function onCellClicked(elCell, i, j) {
         gGame.minesPlaced = true
     }
 
-    cell.isShown = true
-    gGame.shownCount++
-
     if (cell.isMine) {
         gGame.lives--
         updateLivesUI()
@@ -149,7 +146,7 @@ function onCellClicked(elCell, i, j) {
             stopTimer()
             revealAllMines()
             gGame.isOn = false
-            updateSmiley('🤯')
+            updateSmiley('🤯') 
             console.log('Game Over!')
             alert('Game Over! You ran out of lives.')
             return
@@ -157,17 +154,19 @@ function onCellClicked(elCell, i, j) {
             console.log(`You clicked a mine! Lives remaining: ${gGame.lives}`)
             return
         }
-    } else {
-        elCell.innerHTML = cell.minesAroundCount || ''
-        elCell.classList.add('revealed')
     }
 
+    cell.isShown = true
+    gGame.shownCount++
+
+    elCell.innerHTML = cell.minesAroundCount || ''
+    elCell.classList.add('revealed')
 
     if (cell.minesAroundCount === 0) {
         expandShown(gBoard, i, j)
         renderBoard(gBoard)
-
     }
+
     checkGameOver()
 }
 
@@ -430,10 +429,9 @@ function getBestTime(level) {
 function onSafeClick() {
     if (!gGame.isOn || gGame.safeClicks <= 0) return
 
-    // Find all safe, unrevealed cells
     const safeCells = []
-    for (let i = 0; i < gBoard.length; i++) { // Use let instead of var
-        for (let j = 0; j < gBoard[i].length; j++) { // Use let instead of var
+    for (let i = 0; i < gBoard.length; i++) {
+        for (let j = 0; j < gBoard[i].length; j++) { 
             const cell = gBoard[i][j]
             if (!cell.isMine && !cell.isShown && !cell.isMarked) {
                 safeCells.push({ i, j })
@@ -446,7 +444,6 @@ function onSafeClick() {
         return
     }
 
-    // Pick a random safe cell and reveal it
     const randIdx = Math.floor(Math.random() * safeCells.length)
     const { i, j } = safeCells[randIdx]
     const cell = gBoard[i][j]
@@ -454,11 +451,9 @@ function onSafeClick() {
     cell.isShown = true
     gGame.safeClicks--
 
-    // Update the safe click button
     const elSafeClickBtn = document.querySelector('.safe-click')
     elSafeClickBtn.innerText = `Safe Clicks: ${gGame.safeClicks}`
 
-    // Re-render the board
     renderBoard(gBoard)
 
     checkGameOver()

@@ -4,30 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mine-swipper</title>
+    <title>Minesweeper</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body onload = "onInit()">
-    <button class="safe-click" onclick="onSafeClick()">Safe Clicks: 3</button>
-    <div class="lives">Lives: ❤️❤️❤️</div>
-    <button class="hint" onclick="activateHint()">Hints: 3</button>
-    <button class="smiley" onclick="onInit()">😃</button>
-
-
-    <div class="best-time">Best Time: --</div>
-    <div class="timer">Time: 0s</div>
-    <div>
-        <table class="board"></table>
+<body onload="onInit()">
+    <!-- Game Container -->
+    <div class="game-container">
+        <!-- Center Section -->
+        <div>
+            <!-- <h1>Minesweeper</h1> -->
+            <div class="stats">
+                <div class="lives">Lives: ❤️❤️❤️</div>
+                <div class="timer">Time: 0s</div>
+                <div class="best-time">Best Time: --</div>
+            </div>
+    
+            <!-- Smiley Button -->
+            <div class="smiley-container">
+                <button class="smiley" onclick="onInit()">😃</button>
+            </div>
+    
+            <!-- Board -->
+            <table class="board"></table>
+        </div>
+    
+        <!-- Left Controls -->
+        <div class="controls-left">
+            <button class="safe-click" onclick="onSafeClick()">Reveal random cell: 3</button>
+            <button class="hint" onclick="activateHint()">Hints: 3</button>
+            <button class="mega-hint" onclick="activateMegaHint()">Mega Hint</button>
+        </div>
+    
+        <!-- Right Controls -->
+        <div class="controls-right">
+            <button onclick="setLevel(4, 2)">Beginner</button>
+            <button onclick="setLevel(8, 14)">Intermediate</button>
+            <button onclick="setLevel(12, 32)">Expert</button>
+            <button class="restart" onclick="onInit()">Restart</button>
+            <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        </div>
     </div>
-    <button onclick="onInit()">Restart</button>
-    <button class="mega-hint" onclick="activateMegaHint()">Mega Hint</button>
-    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <footer>
+        Made by Baruch Lavy
+    </footer>
 
-    <button onclick="setLevel(4, 2)">Beginner</button>
-    <button onclick="setLevel(8, 14)">Intermediate</button>
-    <button onclick="setLevel(12, 32)">Expert</button>
-
+    <!-- Scripts -->
     <script src="js/main.js"></script>
     <script src="js/utils.js"></script>
 </body>
